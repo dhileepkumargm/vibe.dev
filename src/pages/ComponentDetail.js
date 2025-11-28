@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Download, Heart, Bookmark, Share2, ExternalLink, Code, Eye, Clock, User } from 'lucide-react';
-import { componentsData } from '../ComponentsCOM/data';
+import { componentsData } from '../ComponentsCOM/componentsData';
 
 const ComponentDetail = () => {
   const { slug } = useParams();
