@@ -33,14 +33,13 @@ export default function ChallengeCard({ challenge, index }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -8 }}
       onClick={() => navigate(`/challenge/${challenge.id}`)}
-      className="group relative cursor-pointer"
+      className="group relative cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2"
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 blur transition duration-500" />
+      <div className="absolute -inset-[1px] bg-gradient-to-br from-white/20 via-transparent to-cyan-500/20 opacity-50 group-hover:opacity-100 blur-sm rounded-2xl transition-opacity duration-500" />
 
-      <div className="relative h-full rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition duration-500" />
+      <div className="relative h-full rounded-2xl border border-white/10 bg-[#0a0a0c] ring-1 ring-white/10 shadow-xl group-hover:shadow-cyan-500/20 backdrop-blur-xl overflow-hidden transition-all duration-500">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition duration-500" />
 
         {challenge.cover_image_url && (
           <div className="relative h-48 overflow-hidden">
@@ -49,7 +48,7 @@ export default function ChallengeCard({ challenge, index }) {
               alt={challenge.title}
               className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/50 to-transparent" />
           </div>
         )}
 
@@ -63,7 +62,7 @@ export default function ChallengeCard({ challenge, index }) {
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-2 line-clamp-2 group-hover:text-cyan-400 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-white mb-2 line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
                 {challenge.title}
               </h3>
 
@@ -73,7 +72,7 @@ export default function ChallengeCard({ challenge, index }) {
             </div>
           </div>
 
-          <p className="text-slate-300 text-sm line-clamp-3 leading-relaxed">
+          <p className="text-gray-400 text-sm line-clamp-3 leading-relaxed">
             {challenge.description}
           </p>
 
@@ -88,7 +87,7 @@ export default function ChallengeCard({ challenge, index }) {
                 <div className="text-lg font-bold text-white">
                   ${challenge.prize_pool?.toLocaleString() || '0'}
                 </div>
-                <div className="text-xs text-slate-400">Prize Pool</div>
+                <div className="text-xs text-gray-400">Prize Pool</div>
               </div>
             </div>
 
@@ -100,7 +99,7 @@ export default function ChallengeCard({ challenge, index }) {
               </div>
               <div>
                 <div className="text-lg font-bold text-white">{challenge.total_participants || 0}</div>
-                <div className="text-xs text-slate-400">Participants</div>
+                <div className="text-xs text-gray-400">Participants</div>
               </div>
             </div>
           </div>
@@ -108,12 +107,12 @@ export default function ChallengeCard({ challenge, index }) {
           {challenge.status === 'active' && daysRemaining > 0 && (
             <div className="pt-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-medium text-slate-400">
+                <span className="text-xs font-medium text-gray-400">
                   {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} remaining
                 </span>
                 <span className="text-xs font-medium text-cyan-400">{Math.min(100, progress).toFixed(0)}%</span>
               </div>
-              <div className="h-2 bg-slate-800 rounded-full overflow-hidden border border-white/10">
+              <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/10">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min(100, progress)}%` }}
@@ -126,7 +125,7 @@ export default function ChallengeCard({ challenge, index }) {
 
           {challenge.host_profile && (
             <div className="flex items-center gap-2 pt-3 border-t border-white/10">
-              <span className="text-xs text-slate-400">Hosted by</span>
+              <span className="text-xs text-gray-400">Hosted by</span>
               <div className="flex items-center gap-2">
                 {challenge.host_profile.logo_url && (
                   <img
@@ -135,7 +134,7 @@ export default function ChallengeCard({ challenge, index }) {
                     className="w-5 h-5 rounded-full"
                   />
                 )}
-                <span className="text-xs font-semibold text-slate-200">
+                <span className="text-xs font-semibold text-white">
                   {challenge.host_profile.organization_name || 'Anonymous'}
                 </span>
                 {challenge.host_profile.verified && (

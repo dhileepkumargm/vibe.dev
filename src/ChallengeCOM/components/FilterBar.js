@@ -35,8 +35,8 @@ export default function FilterBar({ filters, onFilterChange }) {
             })}
             className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
               activeCategory === category.id
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30 border-transparent'
-                : 'bg-white/5 text-slate-300 border border-white/10 hover:border-white/20 hover:bg-white/10'
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30 border border-transparent'
+                : 'bg-white/5 text-gray-300 border border-white/10 hover:border-white/20 hover:bg-white/10'
             }`}
           >
             <span className="mr-2">{category.icon}</span>
@@ -46,7 +46,7 @@ export default function FilterBar({ filters, onFilterChange }) {
       </div>
 
       <div className="flex items-center gap-4 flex-wrap">
-        <span className="text-sm font-medium text-slate-400">Status:</span>
+        <span className="text-sm font-medium text-gray-400">Status:</span>
         {statuses.map((status) => (
           <button
             key={status.id}
@@ -57,7 +57,7 @@ export default function FilterBar({ filters, onFilterChange }) {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
               activeStatus === status.id
                 ? 'bg-white/10 text-white border border-white/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
             }`}
           >
             {status.label}
