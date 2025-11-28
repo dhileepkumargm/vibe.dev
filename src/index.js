@@ -51,7 +51,6 @@ import Hero from "./pages/Hero";
 import Components from "./pages/Components";
 import Templates from "./pages/Templates";
 import ChallengePage from "./pages/Challenge";
-import ChallengeDetailPage from "./pages/ChallengeDetailPage";
 import ComponentDetail from "./pages/ComponentDetail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -71,9 +70,9 @@ const router = createBrowserRouter(
         { path: 'components/:slug', element: <ComponentDetail /> },
         { path: 'login', element: <Login /> },
         { path: 'signup', element: <Signup /> },
-        { path: 'templates', element: <Templates /> },
-        { path: 'challenges', element: <ChallengePage /> },
-        { path: 'challenge/:id', element: <ChallengeDetailPage /> }
+        // { path: 'templates', element: <Templates /> },
+        // { path: 'challenges', element: <ChallengePage /> },
+        // { path: 'challenge', element: <ChallengePage /> }
       ]
     }
   ],
