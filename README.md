@@ -68,3 +68,107 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Deploying to Vercel
+
+This project is configured for Vercel using a `vercel.json` file with a single-page app (SPA) fallback so that client-side routing via `react-router-dom` works on direct URL hits.
+
+### Quick Deploy (Git Integration)
+1. Commit and push your code to GitHub (or GitLab/Bitbucket).
+2. Go to https://vercel.com/new and import the repository.
+3. Framework preset: choose "Create React App" (Vercel can also auto-detect).
+4. Build Command: `npm run build`
+5. Output Directory: `build`
+6. Root Directory: leave empty (unless you move the app).
+7. Click Deploy. Vercel will give you a preview and then a production domain after first merge to `main`.
+
+Because `vercel.json` includes a catch‑all route, any path will serve `index.html` which is required for React Router v7 to hydrate correctly.
+
+### Deploy with Vercel CLI
+Install the CLI globally if you haven't:
+
+```
+npm i -g vercel
+```
+
+Then from the project root:
+
+```
+vercel
+```
+
+Answer the interactive prompts (link or create a project). For a production deployment:
+
+```
+vercel --prod
+```
+
+### Environment Variables
+If later you add environment variables (e.g. `REACT_APP_API_URL`), define them in the Vercel Project Settings > Environment Variables for `Development`, `Preview`, and `Production`. Re‑deploy to apply.
+
+### Cache & Rebuild Tips
+If you change Tailwind configuration or add PostCSS plugins, they are picked up automatically on the next build. If you suspect a stale build cache, trigger a redeploy from Vercel ("Redeploy" button) or run `vercel --prod --force`.
+
+### Custom Domain
+Add a custom domain in the Vercel dashboard (Domains tab) and follow the DNS instructions (usually a CNAME to `cname.vercel-dns.com`). Propagation can take a few minutes.
+
+### Preview Deployments
+Every pull request branch automatically gets a unique preview URL. Use this to QA design changes before merging.
+
+### 404 Handling
+The provided rewrite rule in `vercel.json` ensures any unknown path returns `index.html`. If you add a real serverless API route later, place specific API routes before the catch-all rule.
+
+---
+Deployment Summary:
+- Build Command: `npm run build`
+- Output Directory: `build`
+- Install Command: auto (`npm install`)
+- SPA Routing: handled via `vercel.json` routes
+
+You're ready to ship 🚀
+
+## Challenge Components (ChallengeCOM)
+
+The project includes a modular Challenge feature under `src/ChallengeCOM` used by the page `src/pages/Challenge.js`.
+
+### Files
+| File | Purpose |
+|------|---------|
+| `challengeData.js` | Mock data for the active challenge, previous challenges, and leaderboard. Replace with API calls later. |
+| `ActiveChallengeBanner.jsx` | Highlight panel for the current live challenge (stats, tags, countdown visual). |
+| `ChallengeCard.jsx` | Compact summary card for a finished challenge. |
+| `ChallengesGrid.jsx` | Responsive grid layout that renders previous challenge cards. |
+| `Leaderboard.jsx` | Simple leaderboard table showing ranking, score, streak. |
+| `index.js` | Barrel file for cleaner imports. |
+
+### Quick Usage
+```
+import { ActiveChallengeBanner, ChallengesGrid, Leaderboard, activeChallenge, previousChallenges, leaderboard } from '../ChallengeCOM';
+
+<ActiveChallengeBanner challenge={activeChallenge} />
+<ChallengesGrid items={previousChallenges} />
+<Leaderboard entries={leaderboard} />
+```
+
+### Data Shapes
+```
+activeChallenge: { id, title, tagline?, description, participants, prizePool, endsAt, tags[] }
+previousChallenge: { id, title, winners, participants, prize, endedAt, theme, difficulty }
+leaderboard row: { position, user, score, streak }
+```
+
+### Styling & Theme
+The components follow the existing glass / gradient / subtle-depth aesthetic (blur surfaces, faint inner rings, soft shadows). Adjust classes directly or introduce a design token layer if scaling further.
+
+### Extensibility Ideas
+- Filter / search previous challenges
+- Pagination or infinite scroll
+- Skeleton states while loading
+- Real-time leaderboard (websocket)
+- Card detail modal or route (`/challenge/:id`)
+- Tag-based theming + dark/light adaptive gradients
+
+### Replacing Mock Data
+Remove `challengeData.js` and fetch asynchronously in the page (or a dedicated hook). Pass results into the provided component props. Countdown currently shows only days/hours; extend with minutes/seconds + ticking interval if required.
+
+Feel free to iterate or request enhancements.

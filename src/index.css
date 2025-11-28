@@ -1,3 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom gradient utilities */
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +16,72 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Hide scrollbars globally while preserving scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  overscroll-behavior: none;
 }
+
+body::-webkit-scrollbar { display: none; }
+
+/* Utility to hide any element's scrollbar while allowing scroll */
+.scrollbar-hidden { scrollbar-width: none; -ms-overflow-style: none; }
+.scrollbar-hidden::-webkit-scrollbar { display: none; }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Marquee scroll animations */
+@layer utilities {
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+  }
+  .marquee-row {
+    position: relative;
+    overflow: hidden;
+  }
+  .marquee-row:hover .marquee-animate { animation-play-state: paused; }
+  .marquee-animate {
+    display: flex;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .marquee-left { animation-name: marquee-left; }
+  .marquee-right { animation-name: marquee-right; }
+  .marquee-speed-slow { animation-duration: 70s; }
+  .marquee-speed-med { animation-duration: 60s; }
+  .marquee-speed-mid { animation-duration: 65s; }
+  .marquee-speed-fast { animation-duration: 50s; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* New utility classes to support existing JSX class names (animate-marquee-left, direction-reverse, group-hover:pause) */
+@layer utilities {
+  @keyframes scroll-left-full {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .animate-marquee-left {
+    animation: scroll-left-full var(--duration,60s) linear infinite;
+    display: flex;
+  }
+  /* Reverse the direction by reversing the animation direction */
+  .direction-reverse {
+    animation-direction: reverse;
+  }
+  /* Pausing support (used with group-hover:pause) */
+  .pause { animation-play-state: paused; }
 }

@@ -1,0 +1,198 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 6569 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+72 770 Td
+(# Project Technology & Feature List) Tj
+T*
+T*
+(This document outlines the core technologies and application features based on the provided project files, with **Firebase** substituted for all Supabase instances.) Tj
+T*
+T*
+(### Core Technologies \(The "Engine"\)) Tj
+T*
+T*
+(This is the underlying stack and tooling used to build and run your application.) Tj
+T*
+T*
+(* **Project Structure:** Monorepo managed with **pnpm** and **Turborepo**.) Tj
+T*
+(* **Runtimes:**) Tj
+T*
+(    * **Node.js**: The primary runtime for the entire project.) Tj
+T*
+(    * **Bun**: Used as the runtime for the dedicated backend service.) Tj
+T*
+(* **Languages:**) Tj
+T*
+(    * **TypeScript**: The primary language for the entire monorepo.) Tj
+T*
+(    * **SQL**: Used for database functions and queries.) Tj
+T*
+(* **Frameworks:**) Tj
+T*
+(    * **Next.js \(v15\)**: The core React framework for the main web application, using **Turborepo** \(and Turbopack per scripts\).) Tj
+T*
+(    * **Vite**: Used as the build tool for the separate `backend` service.) Tj
+T*
+(* **UI & Styling:**) Tj
+T*
+(    * **React \(v19\)**: The foundational UI library.) Tj
+T*
+(    * **Tailwind CSS**: The utility-first CSS framework for all styling.) Tj
+T*
+(    * **Radix UI**: Used for accessible, unstyled UI primitives \(e.g., `Dialog`, `Select`, `Dropdown`\).) Tj
+T*
+(    * **shadcn/ui Utilities**: The project uses utilities common to `shadcn/ui` like `class-variance-authority`, `clsx`, and `tailwind-merge`.) Tj
+T*
+(* **Database & Backend-as-a-Service \(BaaS\):**) Tj
+T*
+(    * **Firebase**: Used as the core BaaS for database, authentication, and backend services \(replacing Supabase\).) Tj
+T*
+(    * **Prisma**: The primary ORM for database access and schema management.) Tj
+T*
+(    * **Firebase Cloud Functions**: Serverless functions for AI tasks, search, and other backend logic \(replacing Supabase Edge Functions\).) Tj
+T*
+(* **Authentication:** **Clerk** is the primary service for user authentication and management.) Tj
+T*
+(* **Payments & Monetization:** **Stripe** is used for all payments, including subscriptions and creator payouts via Stripe Connect.) Tj
+T*
+(* **File Storage:** **AWS S3** \(or a compatible service like **Cloudflare R2**\) is used for file and media uploads.) Tj
+T*
+(* **AI & Embeddings:** **OpenAI** client is used for AI features, including generating vector embeddings for search.) Tj
+T*
+(* **State Management:**) Tj
+T*
+(    * **Jotai**: Used for global client-side state management.) Tj
+T*
+(    * **TanStack Query**: Used for server-side state, caching, and data fetching.) Tj
+T*
+(* **In-App Editors:**) Tj
+T*
+(    * **Monaco Editor**: Provides a rich, VS Code-like text editor in the browser.) Tj
+T*
+(    * **CodeSandbox Sandpack**: Used to create live, runnable code sandboxes.) Tj
+T*
+(* **Analytics:**) Tj
+T*
+(    * **Amplitude**: For product analytics.) Tj
+T*
+(    * **PostHog**: For product analytics and session recording.) Tj
+T*
+(* **Transactional Email:** **Resend** and **React Email** are used for sending emails.) Tj
+T*
+(* **Testing:** **Vitest** is the framework used for unit and integration tests.) Tj
+T*
+T*
+(---) Tj
+T*
+T*
+(### Application Features \(The "Experience"\)) Tj
+T*
+T*
+(This is what users can actually *do* with your application, based on the file list.) Tj
+T*
+T*
+(* **Component Marketplace \(Core Feature\):**) Tj
+T*
+(    * **Browse Components:** Users can browse components listed on the main page, by category/collection, or by tag.) Tj
+T*
+(    * **Component Pages:** Each component has a dedicated public page showing its details and demos.) Tj
+T*
+(    * **Interactive Previews:** Users can view interactive component demos.) Tj
+T*
+(    * **User Profile Pages:** Public-facing pages that list all components and bundles published by a specific user.) Tj
+T*
+T*
+(* **Creator Studio & Publishing:**) Tj
+T*
+(    * **Creator Dashboard:** A private "Studio" for creators to manage their components, bundles, analytics, and monetization.) Tj
+T*
+(    * **Component Publishing:** A multi-step form for uploading component code, details, and media.) Tj
+T*
+(    * **Template Publishing:** A separate flow for publishing larger, multi-file templates.) Tj
+T*
+(    * **Media Uploads:** Users can upload videos and images for their component previews, which are stored in R2/S3.) Tj
+T*
+T*
+(* **Online Sandbox IDE:**) Tj
+T*
+(    * **In-Browser Editor:** A full-featured sandbox environment for creating and editing components live.) Tj
+T*
+(    * **File Management:** A file explorer for managing the component's file structure \(`.tsx`, `.css`, etc.\).) Tj
+T*
+(    * **Live Bundling:** A dedicated backend service bundles code on the fly to power the previews.) Tj
+T*
+T*
+(* **Monetization & Payments:**) Tj
+T*
+(    * **Subscriptions:** Users can subscribe to plans \(e.g., "Pro"\) on a dedicated pricing page.) Tj
+T*
+(    * **Component Purchasing:** Users can buy components or bundles, with a "paywall" restricting access to paid content.) Tj
+T*
+(    * **Creator Payouts:** Creators can connect their Stripe accounts to receive payouts for their sales.) Tj
+T*
+(    * **Billing Management:** Users can manage their subscriptions and view invoices in their settings.) Tj
+T*
+T*
+(* **AI "Magic" Features:**) Tj
+T*
+(    * **AI Chat:** A chat interface for interacting with the platform's AI.) Tj
+T*
+(    * **AI Search:** AI-powered semantic search for finding components.) Tj
+T*
+(    * **IDE Integration:** An onboarding flow for users to connect their local IDE \(like VS Code\) to the "Magic" features.) Tj
+T*
+(    * **Vector Embeddings:** Backend scripts and **Firebase Cloud Functions** generate vector embeddings from component code to power the AI search.) Tj
+T*
+T*
+(* **User Management & Settings:**) Tj
+T*
+(    * **Authentication:** Standard sign-in, sign-up, and session management via Clerk.) Tj
+T*
+(    * **User Settings:** A private dashboard for users to manage their profile, billing, and API access.) Tj
+T*
+(    * **Account Deletion:** Users have the ability to delete their own accounts.) Tj
+T*
+T*
+(* **Admin & Community Features:**) Tj
+T*
+(    * **Admin Dashboard:** A private section for admins to review component submissions and manage the platform.) Tj
+T*
+(    * **Submission Moderation:** Admins can approve or reject new components, which triggers an email notification to the creator.) Tj
+T*
+(    * **Contest & Leaderboard:** A public leaderboard, likely for a community contest, with archives for past results.) Tj
+T*
+(    * **Public Analytics:** A public-facing dashboard showing platform-wide stats.) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000006862 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+6932
+%%EOF
